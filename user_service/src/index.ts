@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import dotenv from "dotenv";
 dotenv.config();
 import { connectDB } from "./config/db.js";
+import userRoutes from "./routes/user.route.js";
 
 // Initialize Express app
 const app = express();
@@ -16,6 +17,8 @@ connectDB();
 app.get("/", (req: Request, res: Response) => {
   res.send("User Service is up and running!");
 });
+
+app.use("/api/v1/users", userRoutes);
 
 // Start the server
 app.listen(PORT, () => {

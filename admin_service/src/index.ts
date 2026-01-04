@@ -1,8 +1,9 @@
 import express from "express";
 import { Request, Response } from "express";
 import dotenv from "dotenv";
-import { sql } from "./config/db.js";
 dotenv.config();
+import { sql } from "./config/db.js";
+import adminRoutes from "./routes/admin.route.js";
 
 // Initialize Express app
 const app = express();
@@ -44,6 +45,9 @@ async function initializeDatabase() {
 app.get("/", (req: Request, res: Response) => {
   res.send("Admin Service is up and running!");
 });
+
+// Admin routes
+app.use("/api/v1/admin", adminRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 6000;

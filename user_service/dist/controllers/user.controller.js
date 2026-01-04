@@ -40,3 +40,7 @@ export const loginUser = TryCatch(async (req, res) => {
         .status(200)
         .json({ message: "Login Successful...!!!", user, token });
 });
+export const getProfile = TryCatch(async (req, res) => {
+    const user = req.user;
+    res.status(200).json({ message: "User Profile Fetched...!!!", user });
+});

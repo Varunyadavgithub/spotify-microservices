@@ -8,19 +8,23 @@ import userRoutes from "./routes/user.route.js";
 // Initialize Express app
 const app = express();
 
-const PORT = process.env.PORT || 5000;
-
 // Connect to the database
 connectDB();
+
+// Middlewares
+app.use(express.json());
 
 // Default route
 app.get("/", (req: Request, res: Response) => {
   res.send("User Service is up and running!");
 });
 
+// User routes
 app.use("/api/v1/users", userRoutes);
 
 // Start the server
+const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
   console.log(`User service is running on port ${PORT}`);
 });

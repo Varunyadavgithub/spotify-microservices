@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 interface IUser {
-  id: string;
+  _id: string;
   username: string;
   email: string;
   password: string;
@@ -38,7 +38,7 @@ export const isAuthenticated = async (
       }
     );
 
-    req.user = data;
+    req.user = data?.user;
     next();
   } catch (error) {
     res.status(401).json({ message: "Unauthorized Access...!!!" });

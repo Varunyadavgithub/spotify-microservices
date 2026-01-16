@@ -13,7 +13,7 @@ export const isAuthenticated = async (req, res, next) => {
                 token: token,
             },
         });
-        req.user = data;
+        req.user = data?.user;
         next();
     }
     catch (error) {

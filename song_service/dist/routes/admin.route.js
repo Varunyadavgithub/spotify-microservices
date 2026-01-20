@@ -1,0 +1,11 @@
+import express from "express";
+import { isAuthenticated } from "../middlewares/auth.middleware.js";
+import { addAlbum, addSong, addSongThumbnail, deleteAlbum, deleteSong, } from "../controllers/song.controller.js";
+import uploadFile from "../middlewares/multer.middleware.js";
+const router = express.Router();
+router.post("/album/new", isAuthenticated, uploadFile, addAlbum);
+router.post("/song/new", isAuthenticated, uploadFile, addSong);
+router.post("/song/:id", isAuthenticated, uploadFile, addSongThumbnail);
+router.delete("/album/:id", isAuthenticated, deleteAlbum);
+router.delete("/song/:id", isAuthenticated, deleteSong);
+export default router;

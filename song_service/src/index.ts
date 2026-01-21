@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import songRoutes from "./routes/song.route.js";
 import redis from "redis";
+import cors from "cors";
 
 export const redisClient = redis.createClient({
   password: process.env.REDIS_PASSWORD,
@@ -23,6 +24,7 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
+app.use(cors());
 
 // Default route
 app.get("/", (req: Request, res: Response) => {

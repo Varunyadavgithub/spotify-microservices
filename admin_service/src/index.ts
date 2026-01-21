@@ -6,6 +6,7 @@ import { sql } from "./config/db.js";
 import adminRoutes from "./routes/admin.route.js";
 import cloudinary from "cloudinary";
 import redis from "redis";
+import cors from "cors";
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -31,6 +32,7 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
+app.use(cors());
 
 async function initializeDatabase() {
   try {

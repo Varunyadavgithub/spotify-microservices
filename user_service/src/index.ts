@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import { connectDB } from "./config/db.js";
 import userRoutes from "./routes/user.route.js";
+import cors from "cors";
 
 // Initialize Express app
 const app = express();
@@ -13,6 +14,7 @@ connectDB();
 
 // Middlewares
 app.use(express.json());
+app.use(cors());
 
 // Default route
 app.get("/", (req: Request, res: Response) => {

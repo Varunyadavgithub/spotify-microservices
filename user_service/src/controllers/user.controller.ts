@@ -29,7 +29,12 @@ export const registerUser = TryCatch(async (req, res) => {
 
   res
     .status(201)
-    .json({ message: "User Registered Successfully...!!!", user, token });
+    .json({
+      success: true,
+      message: "User Registered Successfully...!!!",
+      user,
+      token,
+    });
 });
 
 export const loginUser = TryCatch(async (req, res) => {
@@ -53,11 +58,13 @@ export const loginUser = TryCatch(async (req, res) => {
 
   return res
     .status(200)
-    .json({ message: "Login Successful...!!!", user, token });
+    .json({ success: true, message: "Login Successful...!!!", user, token });
 });
 
 export const getProfile = TryCatch(async (req: AuthenticatedRequest, res) => {
   const user = req.user;
 
-  res.status(200).json({ message: "User Profile Fetched...!!!", user });
+  res
+    .status(200)
+    .json({ success: true, message: "User Profile Fetched...!!!", user });
 });

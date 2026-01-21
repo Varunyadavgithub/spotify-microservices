@@ -26,6 +26,7 @@ export const getAllAlbums = TryCatch(async (req, res) => {
     }
 
     res.status(200).json({
+      success: true,
       message: "All albums fetched successfully.",
       albums,
     });
@@ -58,6 +59,7 @@ export const getAllSongs = TryCatch(async (req, res) => {
     }
 
     res.status(200).json({
+      success: true,
       message: "All songs fetched successfully.",
       songs,
     });
@@ -103,6 +105,7 @@ export const getAllSongsOfAlbum = TryCatch(async (req, res) => {
   console.log("Cache miss...!!!");
 
   res.status(200).json({
+    success:true,
     message: "All songs of a album fetched successfully.",
     response,
   });
@@ -119,6 +122,7 @@ export const getSingleSong = TryCatch(async (req, res) => {
   }
 
   res.status(200).json({
+    success:true,
     message: "Song fetched successfully.",
     song: song[0],
   });

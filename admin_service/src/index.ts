@@ -5,12 +5,26 @@ dotenv.config();
 import { sql } from "./config/db.js";
 import adminRoutes from "./routes/admin.route.js";
 import cloudinary from "cloudinary";
+import redis from "redis";
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_API_KEY,
   api_secret: process.env.CLOUD_API_SECRET,
 });
+
+export const redisClient = redis.createClient({
+  password: process.env.REDIS_PASSWORD,
+  socket: {
+    host: process.env.REDIS_HOST,
+    port: 14248,
+  },
+});
+
+redisClient
+  .connect()
+  .then(() => console.log("Connected to the Redis DB."))
+  .catch(console.error);
 
 // Initialize Express app
 const app = express();
